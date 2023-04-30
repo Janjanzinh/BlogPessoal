@@ -34,6 +34,8 @@ public class Postagem {
 
 	@UpdateTimestamp
 	private LocalDateTime data;
+	
+	
 
 	public long getId() {
 		return id;

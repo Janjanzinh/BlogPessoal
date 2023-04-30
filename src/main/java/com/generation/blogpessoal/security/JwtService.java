@@ -18,20 +18,22 @@ import io.jsonwebtoken.security.Keys;
 @Component
 public class JwtService {
 
-	public static final String SECRET = "33743677397A244326452948404D635166546A576E5A7234753778214125442A";
+	public static final String SECRET = "5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437";
 
 	private Key getSignKey() {
-		byte[] KeyBytes = Decoders.BASE64.decode(SECRET);
-		return Keys.hmacShaKeyFor(KeyBytes);
+		byte[] keyBytes = Decoders.BASE64.decode(SECRET);
+		return Keys.hmacShaKeyFor(keyBytes);
 	}
 
 	private Claims extractAllClaims(String token) {
-		return Jwts.parserBuilder().setSigningKey(getSignKey()).build().parseClaimsJws(token).getBody();
+		return Jwts.parserBuilder()
+				.setSigningKey(getSignKey()).build()
+				.parseClaimsJws(token).getBody();
 	}
 
-	public <T> T extractClaim(String token, Function<Claims, T> claimsReolver) {
+	public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
 		final Claims claims = extractAllClaims(token);
-		return claimsReolver.apply(claims);
+		return claimsResolver.apply(claims);
 	}
 
 	public String extractUsername(String token) {
@@ -42,9 +44,8 @@ public class JwtService {
 		return extractClaim(token, Claims::getExpiration);
 	}
 
-	public Boolean isTokenExpired(String token) {
+	private Boolean isTokenExpired(String token) {
 		return extractExpiration(token).before(new Date());
-
 	}
 
 	public Boolean validateToken(String token, UserDetails userDetails) {
@@ -53,16 +54,17 @@ public class JwtService {
 	}
 
 	private String createToken(Map<String, Object> claims, String userName) {
-		return Jwts.builder().setClaims(claims).setSubject(userName)
-				.setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
-				.signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
+		return Jwts.builder()
+					.setClaims(claims)
+					.setSubject(userName)
+					.setIssuedAt(new Date(System.currentTimeMillis()))
+					.setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60))
+					.signWith(getSignKey(), SignatureAlgorithm.HS256).compact();
 	}
 
 	public String generateToken(String userName) {
 		Map<String, Object> claims = new HashMap<>();
 		return createToken(claims, userName);
-		
-}
+	}
 
 }

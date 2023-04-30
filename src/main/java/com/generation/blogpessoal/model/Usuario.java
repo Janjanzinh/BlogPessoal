@@ -31,7 +31,7 @@ public class Usuario {
 
 	@NotNull(message = "O Atributo Senha é Obrigatorio!")
 	@Email(message = "O atributo Usuário deve ser um email válido!")
-	private String Usuario;
+	private String usuario;
 
 	@NotBlank(message = "O atributo Senha é Obrigatório!")
 	@Size(min = 8, message = "A Senha deve ter no mínimo 0 caracteres")
@@ -40,9 +40,9 @@ public class Usuario {
 	@Size(max = 5000, message = "O link da foto não pode ser maior do que 5000 caracteres")
 	private String foto;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("usuario")
-	private List<Postagem> postagem;
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
+//	@JsonIgnoreProperties("usuario")
+//	private List<Postagem> postagem;
 
 	public Long getId() {
 		return id;
@@ -76,20 +76,14 @@ public class Usuario {
 		this.foto = foto;
 	}
 
-	public List<Postagem> getPostagem() {
-		return postagem;
-	}
-
-	public void setPostagem(List<Postagem> postagem) {
-		this.postagem = postagem;
-	}
-
 	public String getUsuario() {
-		return Usuario;
+		return usuario;
 	}
 
 	public void setUsuario(String usuario) {
-		Usuario = usuario;
+		this.usuario = usuario;
 	}
 
+	
+	
 }
