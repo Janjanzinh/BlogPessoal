@@ -20,18 +20,18 @@ public class SwaggerConfig {
         return new OpenAPI()
             .info(new Info()
                 .title("Projeto Blog Pessoal")
-                .description("Projeto Blog Pessoal - Generation Brasil")
+                .description("Projeto Blog Pessoal")
                 .version("v0.0.1")
                 .license(new License()
-                    .name("Generation Brasil")
-                    .url("https://brazil.generation.org/"))
+                    .name("Janilson Alves")
+                    .url("https://github.com/Janjanzinh/Blogpessoal"))
                 .contact(new Contact()
-                    .name("Generation Brasil")
-                    .url("https://github.com/conteudoGeneration")
-                    .email("conteudogeneration@generation.org")))
+                    .name("Janilson Alves")
+                    .url("https://www.linkedin.com/in/janilsonalves/")
+                    .email("ja-nilson1571@hotmail.com")))
             .externalDocs(new ExternalDocumentation()
                 .description("Github")
-                .url("https://github.com/conteudoGeneration/"));
+                .url("https://github.com/Janjanzinh"));
     }
 
 
