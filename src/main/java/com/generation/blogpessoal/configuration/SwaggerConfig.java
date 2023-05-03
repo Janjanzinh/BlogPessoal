@@ -26,14 +26,13 @@ public class SwaggerConfig {
                     .name("LinkedIn")
                     .url("https://www.linkedin.com/in/janilsonalves/"))
                 .contact(new Contact()
-                    .name("Janilson Alves")
+                    .name("s Alves")
                     .url("https://github.com/Janjanzinh/Blogpessoal")
                     .email("ja-nilson1571@hotmail.com")))
             .externalDocs(new ExternalDocumentation()
                 .description("Github")
                 .url("https://github.com/Janjanzinh"));
     }
-
 
 	@Bean
 	public OpenApiCustomizer customerGlobalHeaderOpenApiCustomiser() {
