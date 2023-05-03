@@ -32,7 +32,7 @@ public class UsuarioController {
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
+	// jan
 	@GetMapping("/all")
 	public ResponseEntity <List<Usuario>> getAll(){
 		
